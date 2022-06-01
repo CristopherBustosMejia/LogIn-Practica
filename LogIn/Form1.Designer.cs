@@ -41,6 +41,7 @@
             // lblMain
             // 
             this.lblMain.Font = new System.Drawing.Font("Constantia", 30F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblMain.ForeColor = System.Drawing.Color.Navy;
             this.lblMain.Location = new System.Drawing.Point(113, 33);
             this.lblMain.Name = "lblMain";
             this.lblMain.Size = new System.Drawing.Size(309, 61);
@@ -74,6 +75,7 @@
             this.TxtBoxNumCard.Name = "TxtBoxNumCard";
             this.TxtBoxNumCard.Size = new System.Drawing.Size(397, 30);
             this.TxtBoxNumCard.TabIndex = 3;
+            this.TxtBoxNumCard.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.KeyPressNumV);
             // 
             // lblPsswrd
             // 
@@ -121,7 +123,7 @@
             this.Controls.Add(this.PicBoxIso);
             this.Controls.Add(this.lblMain);
             this.Name = "Form1";
-            this.Text = "Form1";
+            this.Text = "LogIn";
             ((System.ComponentModel.ISupportInitialize)(this.PicBoxIso)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

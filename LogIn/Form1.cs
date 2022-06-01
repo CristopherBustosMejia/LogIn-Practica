@@ -20,11 +20,14 @@ namespace LogIn
             InitializeComponent();
         }
         public static User user;
+        Form2 form2 = new Form2();
         private void BtnLogIn_Click(object sender, EventArgs e)
         {
-            user = LogIn(TxtBoxNumCard.Text, TxtBoxPssword.Text, user);
+            LogIn(TxtBoxNumCard.Text, TxtBoxPssword.Text, user);
+            TxtBoxNumCard.Text = "";
+            TxtBoxPssword.Text = "";
         }
-        private User LogIn(string NumAccount,string Password, User user)
+        private void LogIn(string NumAccount,string Password, User user)
         {
             try
             {
@@ -39,22 +42,33 @@ namespace LogIn
                 Reader.Close();
                 if(user.Password == Password)
                 {
-                    Form2 form2 = new Form2();
                     form2.user = user;
+                    form2.form1 = this;
                     form2.Show();
-                    return user;
+                    this.Hide();
                 }
                 else
                 {
                     MessageBox.Show("La contraseña que ingreso no coincide con el numero de cuenta");
-                    return null;
                 }
             }
             catch
             {
                 MessageBox.Show("Usuario no encontrado");
-                return null;
             }
+        }
+
+        private void KeyPressNumV(object sender, KeyPressEventArgs e)
+        {
+            if(!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
+            {
+                e.Handled = true;
+            }
+            else
+            {
+                e.Handled = false;
+            }
+            
         }
     }
 }
